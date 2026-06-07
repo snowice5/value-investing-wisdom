@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Value Investing Wisdom</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="wisdom-panel" aria-labelledby="page-title">
+        <a class="language-link" href="zh.html" aria-label="Switch to Chinese version">中文</a>
+
+        <div class="intro">
+          <p class="kicker">Buffett-inspired value investing</p>
+          <h1 id="page-title">Value Investing Wisdom</h1>
+          <p class="subtitle">
+            Tap the value investing legend to reveal a timeless quote.
+          </p>
+        </div>
+
+        <button class="figure-button" id="figureButton" type="button" aria-label="Reveal an investing quote">
+          <span class="figure-glow" aria-hidden="true"></span>
+          <img
+            src="Value investing BLDR1.png"
+            alt="Buffett-inspired LEGO style investing figure"
+            class="figure-image"
+          />
+        </button>
+
+        <aside class="quote-card" id="quoteCard" aria-live="polite">
+          <span class="quote-mark quote-mark-open" aria-hidden="true">&ldquo;</span>
+          <p id="quoteText">Great investing begins with patience.</p>
+          <p id="quoteSource">Tap the value investing legend to begin</p>
+          <span class="quote-mark quote-mark-close" aria-hidden="true">&rdquo;</span>
+        </aside>
+
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
