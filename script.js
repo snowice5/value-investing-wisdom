@@ -32,27 +32,59 @@ const quoteSets = {
       text: "The intelligent investor is a realist who sells to optimists and buys from pessimists.",
       source: "Benjamin Graham",
     },
+    {
+      text: "A great business at the right price can be worth a long wait.",
+      source: "Value Investing Reminder",
+    },
+    {
+      text: "Time is the friend of the wonderful business.",
+      source: "Warren Buffett",
+    },
+    {
+      text: "The big money is not in the buying or selling, but in the waiting.",
+      source: "Charlie Munger",
+    },
+    {
+      text: "A falling market can be a sale rack for patient capital.",
+      source: "Value Investing Reminder",
+    },
+    {
+      text: "Cash and courage become valuable when prices stop making sense.",
+      source: "Value Investing Reminder",
+    },
+    {
+      text: "Volatility is the fee for owning tomorrow's value today.",
+      source: "Value Investing Reminder",
+    },
+    {
+      text: "When the crowd panics, the patient investor starts reading.",
+      source: "Value Investing Reminder",
+    },
+    {
+      text: "The best investors are disciplined when the market is emotional.",
+      source: "Value Investing Reminder",
+    },
   ],
   zh: [
     {
       text: "價格是你付出的，價值才是你得到的。",
-      source: "巴菲特爺爺",
+      source: "華倫・巴菲特",
     },
     {
       text: "股市是把錢從急躁的人手中，轉到有耐心的人手中的地方。",
-      source: "巴菲特爺爺",
+      source: "華倫・巴菲特",
     },
     {
       text: "風險來自於你不知道自己正在做什麼。",
-      source: "巴菲特爺爺",
+      source: "華倫・巴菲特",
     },
     {
       text: "別人貪婪時要恐懼，別人恐懼時要貪婪。",
-      source: "巴菲特爺爺",
+      source: "華倫・巴菲特",
     },
     {
       text: "用合理價格買進好公司，勝過用便宜價格買進普通公司。",
-      source: "巴菲特爺爺",
+      source: "華倫・巴菲特",
     },
     {
       text: "安全邊際，永遠取決於你買進時付出的價格。",
@@ -66,6 +98,38 @@ const quoteSets = {
       text: "聰明的投資人，是賣給樂觀者、買自悲觀者的現實主義者。",
       source: "班傑明・葛拉漢",
     },
+    {
+      text: "好公司遇上好價格，值得用時間慢慢等。",
+      source: "價值投資提醒",
+    },
+    {
+      text: "時間，是好企業的朋友。",
+      source: "華倫・巴菲特",
+    },
+    {
+      text: "真正的大錢，不在買進或賣出，而在等待。",
+      source: "查理・蒙格",
+    },
+    {
+      text: "市場下跌，有時只是耐心資金的折扣季。",
+      source: "價值投資提醒",
+    },
+    {
+      text: "當價格失去理性，現金和勇氣就開始變珍貴。",
+      source: "價值投資提醒",
+    },
+    {
+      text: "波動，是今天擁有明日價值所付出的門票。",
+      source: "價值投資提醒",
+    },
+    {
+      text: "當群眾恐慌時，有耐心的人開始翻資料。",
+      source: "價值投資提醒",
+    },
+    {
+      text: "最好的投資人，是在市場情緒化時仍保持紀律的人。",
+      source: "價值投資提醒",
+    },
   ],
 };
 
@@ -77,21 +141,24 @@ const quoteCard = document.querySelector("#quoteCard");
 const quoteText = document.querySelector("#quoteText");
 const quoteSource = document.querySelector("#quoteSource");
 
-let lastQuoteIndex = -1;
+let quoteQueue = [];
 const moneySymbols = ["$", "$", "$", "$$", "$", "$$$"];
 
+function shuffleQuoteQueue() {
+  quoteQueue = quotes.map((_, index) => index);
+
+  for (let index = quoteQueue.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [quoteQueue[index], quoteQueue[swapIndex]] = [quoteQueue[swapIndex], quoteQueue[index]];
+  }
+}
+
 function getNextQuote() {
-  if (quotes.length === 1) {
-    return 0;
+  if (quoteQueue.length === 0) {
+    shuffleQuoteQueue();
   }
 
-  let nextIndex = Math.floor(Math.random() * quotes.length);
-  while (nextIndex === lastQuoteIndex) {
-    nextIndex = Math.floor(Math.random() * quotes.length);
-  }
-
-  lastQuoteIndex = nextIndex;
-  return nextIndex;
+  return quoteQueue.pop();
 }
 
 function revealQuote() {
