@@ -46,7 +46,8 @@ button {
   grid-template-areas:
     "intro"
     "figure"
-    "quote";
+    "quote"
+    "footer";
   align-items: center;
   justify-items: center;
   gap: 10px;
@@ -266,6 +267,35 @@ html:lang(zh-Hant) #quoteText {
   text-transform: uppercase;
 }
 
+.page-footer {
+  grid-area: footer;
+  max-width: 680px;
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(75, 74, 67, 0.72);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.footer-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.76;
+}
+
+.page-footer sup {
+  position: relative;
+  top: -0.25em;
+  margin-left: 1px;
+  font-size: 0.62em;
+  line-height: 0;
+}
+
 @keyframes quoteRise {
   0% {
     opacity: 0;
@@ -407,6 +437,18 @@ html:lang(zh-Hant) #quoteText {
   #quoteSource {
     font-size: 0.72rem;
     letter-spacing: 0.05em;
+  }
+
+  .page-footer {
+    max-width: 19rem;
+    margin-top: 14px;
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+
+  .footer-logo {
+    width: 18px;
+    height: 18px;
   }
 
   .money-rain {
