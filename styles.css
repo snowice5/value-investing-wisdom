@@ -279,13 +279,16 @@ html:lang(zh-Hant) #quoteText {
   font-size: 0.78rem;
   line-height: 1.5;
   text-align: center;
+  white-space: nowrap;
 }
 
 .footer-logo {
+  flex: 0 0 auto;
   width: 20px;
   height: 20px;
   object-fit: contain;
   opacity: 0.76;
+  transform: translateY(-1px);
 }
 
 .page-footer sup {
@@ -440,15 +443,16 @@ html:lang(zh-Hant) #quoteText {
   }
 
   .page-footer {
-    max-width: 19rem;
+    max-width: 100%;
     margin-top: 14px;
-    font-size: 0.72rem;
+    gap: 7px;
+    font-size: 0.68rem;
     line-height: 1.45;
   }
 
   .footer-logo {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
   }
 
   .money-rain {
